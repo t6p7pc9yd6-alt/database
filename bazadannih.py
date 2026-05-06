@@ -1,6 +1,6 @@
-import sqlite3
 import csv
-from tkinter.constants import INSERT
+import sqlite3
+
 connection = sqlite3.connect("nepeshkom.db")
 cursor = connection.cursor()
 cursor.execute("PRAGMA foreign_keys = ON")
@@ -15,13 +15,13 @@ name TEXT NOT NULL,
 age NOT NULL
 )
 """)
-cursor.execute("""CREATE TABLE samokat(
+cursor.execute("""CREATE TABLE samokat (
 id INTEGER PRIMARY KEY AUTOINCREMENT,
 name TEXT NOT NULL,
 type TEXT NOT NULl,
 price INTEGER NOT NULL,
 time_rent_price TEXT NOT NULL,
-full_price TEXT NOT NULL,
+full_price TEXT NOT NULL
 )
 """)
 cursor.execute(""" CREATE TABLE rent(
@@ -34,6 +34,8 @@ FOREIGN KEY (user_id) REFERENCES users(id),
 FOREIGN KEY (samokat_id) REFERENCES samokat(id)
 )
 """)
+
+
 print("Введите свое имя")
 usersname = input()
 print("Введите свой возраст")
@@ -42,6 +44,7 @@ cursor.execute("""
 INSERT INTO users (name, age)
 VALUES (?, ?)
 """, (usersname, usersage))
+
 print("Введите название самоката")
 tape_name = input()
 print("Введите тип самоката")
@@ -50,7 +53,7 @@ print("Введите цену аренды")
 tape_time_rent_price = input()
 print("Введите полную стоимость")
 tape_full_price = input()
-cursor.execute("""
+cursor.executemany("""
 INSERT INTO samokat (name, type , time_rent_price, full_price)
 VALUES (?,?,?,?)
 """,(tape_name, tape_type, tape_time_rent_price ,tape_full_price))
