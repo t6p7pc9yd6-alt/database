@@ -20,8 +20,7 @@ id INTEGER PRIMARY KEY AUTOINCREMENT,
 name TEXT NOT NULL,
 type TEXT NOT NULl,
 price INTEGER NOT NULL,
-time_rent_price TEXT NOT NULL,
-full_price TEXT NOT NULL
+time_rent_price TEXT NOT NULL
 )
 """)
 cursor.execute(""" CREATE TABLE rent(
@@ -53,8 +52,8 @@ print("Введите цену аренды")
 tape_time_rent_price = input()
 print("Введите полную стоимость")
 tape_full_price = input()
-cursor.executemany("""
-INSERT INTO samokat (name, type , time_rent_price, full_price)
+cursor.execute("""
+INSERT INTO samokat (name, type , time_rent_price, price)
 VALUES (?,?,?,?)
 """,(tape_name, tape_type, tape_time_rent_price ,tape_full_price))
 
@@ -63,7 +62,7 @@ INSERT INTO users (name, age)
 VALUES ("Саша", 14)
 """)
 cursor.execute("""
-INSERT INTO samokat (name, type, time_rent_price , full_price)
+INSERT INTO samokat (name, type, time_rent_price , price)
 VALUES ("Kugoo Kirin M2 Pro", "электрический", "1000 р/с", "40000") 
 """)
 cursor.execute("""
@@ -116,7 +115,7 @@ samokat_array =[
     ("MIDWAY MINI", "электрический", "750 р/д", "25000")
 ]
 cursor.executemany("""
-INSERT INTO samokat (name, type, time_rent_price, full_price)
+INSERT INTO samokat (name, type, time_rent_price, price)
 VALUES(?,?,?,?)
 """, samokat_array)
 rent_array = [
