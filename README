@@ -33,3 +33,17 @@ md
 | samokat_id     | INTEGER | Идентификатор самоката из tapes     |
 | borrowing_date | TEXT    | Дата взятия самоката на прокат      |
 | return_date    | TEXT    | Дата возвращения самоката           |
+
+
+
+
+
+Таблица пользователей
+https://1s4oyld5dc.ucarecd.net/5431f3b7-8cf0-41e4-b348-71e4fd4df11f/
+
+
+Таблица самокатов
+https://1s4oyld5dc.ucarecd.net/3e89ee17-f6d1-4bf7-907a-cdb2f8a23b02/
+
+Таблица для взятия в аренду и возвращения
+https://1s4oyld5dc.ucarecd.net/f10d2b3c-005e-4347-9e93-e9f4834e64fd/
