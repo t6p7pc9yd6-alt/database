@@ -103,7 +103,7 @@ samokat_array =[
     ("Halten Tony v.1", "электрический", "1000 р/д", "34000"),
     ("HIPER Slim VX900", "электрический", "1000 р/д", "27500"),
     ("Zaxboard ES-8i V2 Aqua", "электрический", "1000 р/д", "33000"),
-    ("Ultron T103", "электрический", "3000 р/д", "Леонид 70000"),
+    ("Ultron T103", "электрический", "3000 р/д", "70000"),
     ("Xiaomi Electric Scooter 4 Lite EU", "электрический", "1000 р/д", "35000"),
     ("Kugoo Kirin M2+ с сиденьем", "электрический", "1500 р/д", "40000"),
     ("Kugoo Kirin M2+ без сиденья", "электрический", "1000 р/д", "35000"),
@@ -114,6 +114,9 @@ samokat_array =[
     ("Kugoo Kirin First", "электрический", "500 р/д", "20000"),
     ("MIDWAY MINI", "электрический", "750 р/д", "25000")
 ]
+
+connection.commit()
+
 cursor.executemany("""
 INSERT INTO samokat (name, type, time_rent_price, price)
 VALUES(?,?,?,?)
@@ -151,8 +154,13 @@ rent_array = [
     (30, 30, "2024-07-29", "2024-08-07")
 ]
 cursor.executemany("""
-INSERT INTO rent (user_id, samokat_id, borrowing_date, return_date)
+INSERT INTO rental (user_id, samokat_id, borrowing_date, return_date)
 VALUES(?,?,?,?)
 """, rent_array)
+
+
+
 connection.commit()
+
 connection.close()
+
